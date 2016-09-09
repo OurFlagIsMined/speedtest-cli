@@ -416,19 +416,22 @@ def closestServers(client, all=False):
     distance
     """
 
+    """Notes on urls (ideally the following changes should have worked, and at least some of them did when running the python file directly, but the urls list below are the only ones that would actually work after building the egg):
+    '://www.speedtest.net/speedtest-servers-static.php' --> '://www.speedtest.net/speedtest-servers-static.php?load=1' OR 'https://www.speedtest.net/speedtest-servers-static.php'
+        Empty server response unless using '?load=1' or loading over https
+    '://c.speedtest.net/speedtest-servers-static.php' --> 'http://c.speedtest.net/speedtest-servers-static.php'
+        Invalid certificate when loaded over https
+    '://www.speedtest.net/speedtest-servers.php'
+        Redirects to 'http://c.speedtest.net/speedtest-servers-static.php?load=1' when loaded over http
+        Doesn't show 'url2' when loaded over https
+    '://c.speedtest.net/speedtest-servers.php' --> 'http://c.speedtest.net/speedtest-servers.php'
+        Redirects to 'http://c.speedtest.net/speedtest-servers-static.php?load=1' when loaded over http
+        Invalid certificate when loaded over https
+    """
     urls = [
-        # '://www.speedtest.net/speedtest-servers-static.php',
-        '://www.speedtest.net/speedtest-servers-static.php?load=1',
-            """Empty server response unless using '?load=1' or loading over https"""
-        'http://c.speedtest.net/speedtest-servers-static.php',
-            """Invalid certificate when loaded over https"""
-        '://www.speedtest.net/speedtest-servers.php',
-            """Redirects to 'http://c.speedtest.net/speedtest-servers-static.php?load=1' when loaded over http
-               Doesn't show 'url2' when loaded over https"""
-        # '://c.speedtest.net/speedtest-servers.php',
-        'http://c.speedtest.net/speedtest-servers.php',
-            """Redirects to 'http://c.speedtest.net/speedtest-servers-static.php?load=1' when loaded over http
-               Invalid certificate when loaded over https"""
+        'https://www.speedtest.net/speedtest-servers-static.php',
+        '://www.speedtest.net/speedtest-servers.php?load=1',
+        'http://c.speedtest.net/speedtest-servers.php?load=1',
     ]
     errors = []
     servers = {}
