@@ -434,7 +434,7 @@ def closestServers(client, all=False):
         # '://www.speedtest.net/speedtest-servers.php', # fails
         # 'https://www.speedtest.net/speedtest-servers.php',
         # 'http://c.speedtest.net/speedtest-servers.php', # fails
-        'https://c.speedtest.net/speedtest-servers.php',
+        'http://c.speedtest.net/speedtest-servers.php?load=1',
     ]
     errors = []
     servers = {}
