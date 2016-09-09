@@ -429,7 +429,7 @@ def closestServers(client, all=False):
         Invalid certificate when loaded over https
     """
     urls = [
-        'https://www.speedtest.net/speedtest-servers-static.php',
+        # 'https://www.speedtest.net/speedtest-servers-static.php',
         'http://c.speedtest.net/speedtest-servers-static.php',
         '://www.speedtest.net/speedtest-servers.php',
         'http://c.speedtest.net/speedtest-servers.php',
