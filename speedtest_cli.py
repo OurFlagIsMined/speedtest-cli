@@ -417,7 +417,7 @@ def closestServers(client, all=False):
     """
 
     """Notes on urls:
-    '://www.speedtest.net/speedtest-servers-static.php' --> 'https://www.speedtest.net/speedtest-servers-static.php'
+    '://www.speedtest.net/speedtest-servers-static.php' --> '://www.speedtest.net/speedtest-servers-static.php?load=1' OR 'https://www.speedtest.net/speedtest-servers-static.php'
         Empty server response unless using '?load=1' or loading over https
     '://c.speedtest.net/speedtest-servers-static.php' --> 'http://c.speedtest.net/speedtest-servers-static.php'
         Invalid certificate when loaded over https
@@ -429,8 +429,9 @@ def closestServers(client, all=False):
         Invalid certificate when loaded over https
     """
     urls = [
-        # 'https://www.speedtest.net/speedtest-servers-static.php',
-        # '://www.speedtest.net/speedtest-servers.php?load=1',
+        'http://invalid.com/servers.php',
+        'https://www.speedtest.net/speedtest-servers-static.php',
+        '://www.speedtest.net/speedtest-servers.php?load=1',
         'http://c.speedtest.net/speedtest-servers.php?load=1',
     ]
     errors = []
